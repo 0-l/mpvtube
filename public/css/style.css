@@ -1,0 +1,243 @@
+@charset "UTF-8";
+
+:root {
+    --accent: crimson;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: var(--accent);
+}
+
+body {
+    height: 100vh;
+    background: #121319;
+    overflow: hidden;
+}
+
+.search.post {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.search {
+    z-index: 99;
+}
+
+.search form {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.search form input {
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    background: 0;
+    width: 80%;
+    outline: 0;
+    margin: 0;
+    padding: .5em 0 .5em 1.5em;
+    border: 0;
+    box-shadow: inset 0 -2px #fff;
+    font-size: 27px;
+    font-weight: 100;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+}
+
+.search.post form input:focus {
+    box-shadow: inset 0 -2px grey;
+}
+
+.search.repost form input:focus {
+    box-shadow: inset 0 -2px var(--accent);
+}
+
+.search.repost {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+}
+
+.search.repost.active {
+    top: 0;
+    background: rgba(0, 0, 0, .8);
+}
+
+.search:not(.repost) .close {
+    display: none;
+}
+
+.search .close {
+    background: 0;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    position: absolute;
+    right: 10%;
+    cursor: pointer;
+}
+
+.search .close:hover {
+    filter: opacity(.5);
+}
+
+.data {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.data ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /*padding: 0 1em 0 0;*/
+    overflow-y: scroll;
+}
+
+.data ul::-webkit-scrollbar {
+    width: 2px;
+    background: #383a48;
+}
+
+.data ul::-webkit-scrollbar-thumb { background: #e5e5e5; }
+
+.data li {
+    position: relative;
+    width: 50%;
+    height: 330px;
+    overflow: hidden;
+}
+
+.data .thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.data .info {
+    position: absolute;
+    color: #fff;
+    z-index: 1;
+    top: -100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #121319, transparent);
+    height: 100px;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    transition: all .3s ease-in-out;
+}
+
+.data .link {
+    position: absolute;
+    text-indent: -200vh;
+    width: 50px;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: 0;
+    z-index: 1;
+}
+
+.data form {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.data form {
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data form i {
+    color: #fff;
+    font-size: 100pt;
+    z-index: 1;
+}
+
+.data li:hover form {
+    visibility: visible;
+    opacity: 1;
+}
+
+.data li::after {
+    content: attr(length);
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    padding: .2em;
+    font: 500 12px 'Roboto', sans-serif;
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 2px 0 0;
+    padding: .5em .7em;
+    transition: all .3s ease-in-out;
+}
+
+.data li:hover::after {
+    bottom: 0;
+}
+
+.data li:hover .info {
+    top: 0;
+}
+
+.data .title {
+    font: 200 22pt 'Roboto', sans-serif;
+}
+
+.data .user {
+    font: 500 10pt 'Roboto', sans-serif;
+}
+
+.info div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info .views {
+    font: 500 12px 'Roboto', sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+.info .user span {
+    font-weight: 300;
+    color: #dadada;
+}
+
+.search form i {
+    position: absolute;
+    font-size: 30px;
+    color: #fff;
+    left: 10%;
+    top: 15px;
+}
