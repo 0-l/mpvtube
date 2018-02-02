@@ -1,9 +1,15 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require 'sinatra'
-require 'eat'
-require 'openssl'
+%w{sinatra eat openssl}.each do |lib|
+  require lib
+rescue LoadError
+  puts "Installing gem - #{lib}"
+  system "gem install #{lib}"
+
+  Gem.clear_paths
+  retry
+end
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
@@ -52,9 +58,17 @@ end
 get '/mpv' do
   @link = params[:link]
 
+  print "Playing #@link"
   system "mpv #@link"
 
   redirect :/
+end
+
+get '/download' do
+  @link = params[:link]
+
+  print "Downloading #@link"
+  system "youtube-dl #@link"
 end
 
 get '/' do

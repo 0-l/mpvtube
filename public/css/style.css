@@ -160,13 +160,13 @@ body {
     z-index: 1;
 }
 
-.data form {
+.data .mpv {
     opacity: 0;
     visibility: hidden;
     transition: all .3s ease-in-out;
 }
 
-.data form {
+.data .mpv {
     position: absolute;
     background: rgba(0, 0, 0, .5);
     top: 0;
@@ -177,13 +177,13 @@ body {
     justify-content: center;
 }
 
-.data form i {
+.data .mpv i {
     color: #fff;
     font-size: 100pt;
     z-index: 1;
 }
 
-.data li:hover form {
+.data li:hover .mpv {
     visibility: visible;
     opacity: 1;
 }
@@ -240,4 +240,47 @@ body {
     color: #fff;
     left: 10%;
     top: 15px;
+}
+
+.utils {
+    position: absolute;
+    display: flex;
+    bottom: -10%;
+    margin: 0 0 0 .5em;
+    color: #fff;
+    transition: all .3s;
+    z-index: 2;
+}
+
+.data li:hover .utils {
+    bottom: 0;
+}
+
+.utils a {
+    color: #fff;
+}
+
+.utils a:hover, .utils .down:hover {
+    opacity: .8;
+}
+
+.utils .down {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0 0 0 1.5em;
+}
+
+.utils .down input {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    outline: 0;
+    background: 0;
+    z-index: 1;
+    cursor: pointer;
+    border: 0;
+    text-indent: -200vh;
 }
